@@ -4,7 +4,7 @@ function Header() {
     return (
         <header className = "Header"> 
         <div>
-            <h1> Home: Midterm </h1>
+            <h1> Bars and Jokes</h1>
         </div>
         <nav>
             <a href="/?state=California">California</a>

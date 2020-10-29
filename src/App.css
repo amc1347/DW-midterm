@@ -1,8 +1,60 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+}
 
+.beer {
+  /* display: flex; */
+  justify-content: space-around;
+}
+
+.beercity {
+  text-align: center;
 }
 
 .beername {
   font-size: 15pt;
-  color: darkgreen;
+  color: black;
+}
+
+.Header {
+  align-items: center; 
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1080px;
+  padding: 0 200px;
+}
+
+.Header h1 {
+  text-transform: uppercase;
+  font-size: 40px;
+}
+
+
+.Header nav a {
+  color:black;
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.Header nav a:hover {
+  color: grey;
+  font-weight: 500;
+}
+
+.jokea {
+  text-align: center;
+}
+
+.jokeq {
+  font-size: 14pt;
+  color: hotpink;
+  text-align: center;
 }

@@ -49,21 +49,22 @@ function Home() {
     console.log("beerData", beerData);
     console.log("jokeData", jokeData)
     return ( 
-        <div>
+        <div >
             <Header/>
-
-            {beerData.map((state, i) => (
-                <div key={i}>
-                    <h2 className="beername">{state.name}</h2>
-                    <p className="beercity">City: {state.city}</p>
-                </div>
-            ))}
-            {jokeData.map((type, i) => (
-                <div key={i}>
-                    <h2 className="jokeq">{type.setup}</h2>
-                    <p className="jokea">State: {type.punchline}</p>
-                </div>
-            ))}
+            <div className="App">
+                {beerData.map((state, i) => (
+                    <div key={i} className="beer">
+                        <h2 className="beername">{state.name}</h2>
+                        <p className="beercity">City: {state.city}</p>
+                    </div>
+                ))}
+                {jokeData.map((type, i) => (
+                    <div key={i} className = "jokes">
+                        <h2 className="jokeq">{type.setup}</h2>
+                        <p className="jokea">Answer: {type.punchline}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
