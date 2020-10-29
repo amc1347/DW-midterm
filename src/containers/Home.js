@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import Header from "../components/Header";
+import { useHistory } from 'react-router-dom';
+
 
 
 function Home() {
+    const history = useHistory();
+
     const [beerData, setBeerData] = useState([]);
+    const [state, setState] = useState("New_York");
 
     useEffect(() => {
-        axios.get('https://api.openbrewerydb.org/breweries')
+        axios.get(`https://api.openbrewerydb.org/breweries?by_state=${state}`)
         .then(function(response){
             const beerresponsedata = response.data
             setBeerData(beerresponsedata);
@@ -15,8 +21,16 @@ function Home() {
         .catch(function(error) {
             console.warn(error);
         })
-    }, []);
+    }, [state]);
 
+    useEffect(() => {
+        const searchParams = history.location.search;
+        const urlParams = new URLSearchParams(searchParams);
+        const state = urlParams.get("state");
+        if (state) {
+            setState(state)
+        }
+    }, [history]);
 
     const [jokeData, setJokeData] = useState([]);
 
@@ -36,17 +50,18 @@ function Home() {
     console.log("jokeData", jokeData)
     return ( 
         <div>
-            <h1>Home: Midterm</h1>
-            {beerData.map((city, i) => (
+            <Header/>
+
+            {beerData.map((state, i) => (
                 <div key={i}>
-                    <h2>{city.name}</h2>
-                    <p>State: {city.state}</p>
+                    <h2 className="beername">{state.name}</h2>
+                    <p className="beercity">City: {state.city}</p>
                 </div>
             ))}
             {jokeData.map((type, i) => (
                 <div key={i}>
-                    <h2>{type.setup}</h2>
-                    <p>State: {type.punchline}</p>
+                    <h2 className="jokeq">{type.setup}</h2>
+                    <p className="jokea">State: {type.punchline}</p>
                 </div>
             ))}
         </div>
